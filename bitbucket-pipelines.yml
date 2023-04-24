@@ -8,6 +8,11 @@ pipelines:
   default:
     - stage:
         name: check-rules
+        condition:
+          # Only run this stage if the rules/ folder changes
+          changesets:
+            includePaths:
+              - "rules/**"
         steps:
           - step:
               runs-on: self.hosted
