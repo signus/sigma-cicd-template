@@ -9,10 +9,10 @@ pipelines:
     - stage:
         name: check-rules
         condition:
-          # Only run this stage if the rules/ folder changes
+          # Only run this stage if YAML files in rules/ are in a changeset
           changesets:
             includePaths:
-              - "rules/**"
+              - "rules/**/*.yml"
         steps:
           - step:
               runs-on: self.hosted
