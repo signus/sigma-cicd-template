@@ -1,0 +1,26 @@
+# bitbucket-pipelines.yml
+
+options:
+  docker: true
+  max-time: 20
+
+pipelines:
+  default:
+    - stage:
+        name: check-rules
+        steps:
+          - step:
+              runs-on: self.hosted
+              name: lint-yaml-rules
+              image: pipelinecomponents/yamllint:latest
+              script:
+                - ls
+                - yamllint -d relaxed rules/
+          - step:
+              runs-on: self.hosted
+              name: check-sigma-rules
+              image: python:3.11
+              script:
+                - python -m pip install sigma-cli
+                - sigma check -i rules/
+

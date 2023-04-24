@@ -1,0 +1,34 @@
+# .gitlab-ci.yml
+# TODO: Determine a way to avoid checking rules if no rules have changed (avoids processing if we make repo-specific changes).
+---
+stages:
+  - build
+
+build-lint-yaml-rules:
+  stage: build
+  image: registry.gitlab.com/pipeline-components/yamllint:latest
+  script:
+    - yamllint -d relaxed rules/
+
+# Runs sigma-cli check on all available rules
+# TODO: Add filter for doing a check on status=stable when the option is available
+build-check-sigma-rules:
+  image: python:3.10
+  stage: build
+  before_script:
+    - python -m pip install sigma-cli
+  script:
+    - sigma check -i rules/
+
+# Builds out the set of rules into MDATP kusto queries
+# NOTE: This utilizes sigmatools
+build-convert-sigmac-mdatp:
+  stage: build
+  image: python:3.10
+  before_script:
+    - python -m pip install sigmatools
+  script:
+    - sigmac --filter 'status=stable' --target mdatp --output out.kusto --recurse rules/
+  artifacts:
+    paths:
+      - out.kusto
