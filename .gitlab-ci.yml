@@ -9,6 +9,10 @@ build-lint-yaml-rules:
   image: registry.gitlab.com/pipeline-components/yamllint:latest
   script:
     - yamllint -d relaxed rules/
+  only:
+    changes:
+      - rules/**/*.yml
+
 
 # Runs sigma-cli check on all available rules
 # TODO: Add filter for doing a check on status=stable when the option is available
@@ -19,6 +23,9 @@ build-check-sigma-rules:
     - python -m pip install sigma-cli
   script:
     - sigma check -i rules/
+  only:
+    changes:
+      - rules/**/*.yml
 
 # Builds out the set of rules into MDATP kusto queries
 # NOTE: This utilizes sigmatools
@@ -29,6 +36,9 @@ build-convert-sigmac-mdatp:
     - python -m pip install sigmatools
   script:
     - sigmac --filter 'status=stable' --target mdatp --output out.kusto --recurse rules/
+  only:
+    changes:
+      - rules/**/*.yml
   artifacts:
     paths:
       - out.kusto
