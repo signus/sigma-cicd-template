@@ -1,0 +1,45 @@
+---
+resources:
+- name: sigma-cicd-template
+  type: git
+  icon: github
+  source: &repo-source
+    uri: https://github.com/signus/sigma-cicd-template
+    branch: main
+
+jobs:
+- name: check-rules-job
+  plan:
+  - get: sigma-cicd-template
+    trigger: true
+  - task: yamllint-rules-task
+    config:
+      inputs:
+      - name: sigma-cicd-template
+      platform: linux
+      image_resource:
+        type: registry-image
+        source:
+          repository: pipelinecomponents/yamllint
+      run:
+        path: yamllint
+        args: ["-d", "relaxed", "sigma-cicd-template/rules/"]
+
+  - task: sigma-cli-check-task
+    config:
+      inputs:
+      - name: sigma-cicd-template
+      platform: linux
+      image_resource:
+        type: registry-image
+        source:
+          repository: python
+          tag: 3.11
+      run:
+        path: sh
+        args:
+          - -exc
+          - |
+            ls -lah
+            pip install sigma-cli
+            sigma check sigma-cicd-template/rules/
