@@ -1,6 +1,6 @@
 # .github/workflows/check-rules.yml
 ---
-name: Check Sigma Rules
+name: Check Rules
 on:
   push:
     paths:
