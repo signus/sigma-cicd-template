@@ -7,7 +7,8 @@ A template repository for managing a Detection Engineering process around Sigma 
 
 ## TODO
 - [ ] Create Makefile or process for aligning configurations/steps between tools (as much as possible).
-- [ ] Add configuration for pipelines in GitHub Actions
+- [ ] Create Makefile step for initializing repository with specific CI/CD configuration (e.g. `make concourse`)
+- [x] Add configuration for pipelines in GitHub Actions
 - [ ] Add configuration for pipelines in Concourse
 - [ ] Add configuration for pipelines in ArgoCD
 - [ ] Add configuration for pipelines in Jenkins
