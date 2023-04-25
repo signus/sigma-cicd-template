@@ -1,5 +1,4 @@
 # .gitlab-ci.yml
-# TODO: Determine a way to avoid checking rules if no rules have changed (avoids processing if we make repo-specific changes).
 ---
 stages:
   - build
@@ -11,6 +10,7 @@ build-lint-yaml-rules:
     - yamllint -d relaxed rules/
   only:
     changes:
+      - .gitlab-ci.yml
       - rules/**/*.yml
 
 
@@ -25,6 +25,7 @@ build-check-sigma-rules:
     - sigma check -i rules/
   only:
     changes:
+      - .gitlab-ci.yml
       - rules/**/*.yml
 
 # Builds out the set of rules into MDATP kusto queries
@@ -38,6 +39,7 @@ build-convert-sigmac-mdatp:
     - sigmac --filter 'status=stable' --target mdatp --output out.kusto --recurse rules/
   only:
     changes:
+      - .gitlab-ci.yml
       - rules/**/*.yml
   artifacts:
     paths:

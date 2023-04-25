@@ -1,5 +1,5 @@
 # bitbucket-pipelines.yml
-
+---
 options:
   docker: true
   max-time: 20
@@ -12,6 +12,7 @@ pipelines:
           # Only run this stage if YAML files in rules/ are in a changeset
           changesets:
             includePaths:
+              - "bitbucket-pipelines.yml"
               - "rules/**/*.yml"
         steps:
           - step:
