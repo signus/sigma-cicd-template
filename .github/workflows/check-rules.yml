@@ -18,7 +18,8 @@ jobs:
       volumes:
         - rules:/rules
     steps:
-      - run: |
+      - name: Lint YAML rules
+        run: |
           yamllint -d relaxed /rules
   
   check-sigma-rules:
@@ -29,6 +30,9 @@ jobs:
       volumes:
         - rules:/rules
     steps:
-      - run: |
+      - name: Install sigma-cli
+        run: |
           pip install sigma-cli
+      - name: sigma-cli check
+        run: |
           sigma check -i /rules
