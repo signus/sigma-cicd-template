@@ -1,0 +1,27 @@
+# .github/workflows/check-rules.yml
+---
+name: Check Sigma Rules
+on:
+  push:
+    paths:
+      - 'rules/**/*.yml'
+    pull_request:
+      branches: [ main ]
+
+jobs:
+  lint-sigma-rules:
+    name: Lint Sigma Rules
+    runs-on: ubuntu-latest
+    container: pipelinecomponents/yamllint
+    steps:
+      - run: |
+          yamllint -d relaxed rules/
+  
+  check-sigma-rules:
+    name: Check Sigma Rules
+    runs-on: ubuntu-latest
+    container: python:3.11
+    steps:
+      - run: |
+          pip install sigma-cli
+          sigma check -i rules/
