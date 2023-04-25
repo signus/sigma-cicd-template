@@ -12,16 +12,22 @@ jobs:
   lint-sigma-rules:
     name: Lint Sigma Rules
     runs-on: ubuntu-latest
-    container: pipelinecomponents/yamllint
+    container:
+      image: pipelinecomponents/yamllint
+      volumes:
+        - rules/:/rules
     steps:
       - run: |
-          yamllint -d relaxed rules/
+          yamllint -d relaxed /rules
   
   check-sigma-rules:
     name: Check Sigma Rules
     runs-on: ubuntu-latest
-    container: python:3.11
+    container:
+      image: python:3.11
+      volumes:
+        - rules/:/rules
     steps:
       - run: |
           pip install sigma-cli
-          sigma check -i rules/
+          sigma check -i /rules
