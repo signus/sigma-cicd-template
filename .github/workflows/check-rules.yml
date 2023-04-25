@@ -4,6 +4,7 @@ name: Check Rules
 on:
   push:
     paths:
+      - '.github/workflows/**'
       - 'rules/**/*.yml'
     pull_request:
       branches: [ main ]
@@ -15,7 +16,7 @@ jobs:
     container:
       image: pipelinecomponents/yamllint
       volumes:
-        - rules/:/rules
+        - rules:/rules
     steps:
       - run: |
           yamllint -d relaxed /rules
@@ -26,7 +27,7 @@ jobs:
     container:
       image: python:3.11
       volumes:
-        - rules/:/rules
+        - rules:/rules
     steps:
       - run: |
           pip install sigma-cli
