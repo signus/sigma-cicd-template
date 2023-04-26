@@ -6,6 +6,9 @@ resources:
   source: &repo-source
     uri: https://github.com/signus/sigma-cicd-template
     branch: main
+    paths:
+      - .cicd/concourse/check-rules.yml
+      - rules/**/*.yml
 
 jobs:
 - name: check-rules-job
