@@ -6,17 +6,17 @@ A template repository for managing a Detection Engineering process around Sigma 
 2) Move your rules respository into `rules/` and any relevant configurations for Sigma (CLI/backends/pipelines) into `config/`.
 
 ### Initialize
-To initialize the repository for the CICD platform of your choice (note that this action is destructive and removes the `.cicd` folder:
+To initialize the repository for the CICD platform of your choice (note that this action is destructive and removes the `.cicd` folder):
 
 ```shell
-make cicd CICD=concourse
+make cicd CICD=gitlab
 ```
 
 ### Concourse CI
 Install the pipelines using `fly`:
 
 ```shell
-fly -t "cluster" set-pipeline -p check-rules -c concourse-check-rules.yml
+fly -t "cluster" set-pipeline -p check-rules -c .cicd/concourse/check-rules.yml
 ```
 
 ## TODO
