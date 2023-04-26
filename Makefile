@@ -12,6 +12,9 @@ endif
 ifeq ($(CICD), concourse)
 	@echo "[!] Placeholder for Concourse actions"
 endif
+ifeq ($(CICD), drone)
+	@echo "[!] Placeholder for Drone actions"
+endif
 ifeq ($(CICD), earthly)
 	@echo "[!] Placeholder for Earthly actions"
 endif
@@ -25,7 +28,6 @@ endif
 ifeq ($(CICD), jenkins)
 	@echo "[!] Placeholder for Jenkins actions"
 endif
-	@$(MAKE) clean-cicd
 
 clean-cicd:
 	@echo "[+] Removing .cicd directory..."

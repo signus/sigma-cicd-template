@@ -1,15 +1,17 @@
 # sigma-cicd-template
-A template repository for managing a Detection Engineering process around Sigma with Continous Integration/Deployment.
+A template repository for managing a Detection Engineering process around Sigma with open source Continous Integration/Deployment platforms.
 
 ## Usage
 1) Clone/fork and keep the CI/CD platform configuration necessary for your pipeline and modify as necessary.
 2) Move your rules respository into `rules/` and any relevant configurations for Sigma (CLI/backends/pipelines) into `config/`.
 
 ### Initialize
-To initialize the repository for the CICD platform of your choice (note that this action is destructive and removes the `.cicd` folder):
+To initialize the repository for the CICD platform of your choice:
 
 ```shell
 make cicd CICD=gitlab
+# optionally clean up the .cicd folder once you have what you need
+make clean-cicd
 ```
 
 ### Concourse CI
@@ -24,6 +26,7 @@ fly -t "cluster" set-pipeline -p check-rules -c .cicd/concourse/check-rules.yml
 - [x] Create Makefile step for initializing repository with specific CI/CD configuration (e.g. `make cicd concourse`)
 - [ ] Add configuration for pipelines in ArgoCD
 - [x] Add configuration for pipelines in ConcourseCI
+- [ ] Add configuration for pipelines in Drone
 - [ ] Add configuration for pipelines in EarthlyCI
 - [x] Add configuration for pipelines in GitHub Actions
 - [ ] Add configuration for pipelines in Jenkins
