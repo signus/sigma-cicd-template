@@ -22,6 +22,7 @@ fly -t "cluster" set-pipeline -p check-rules -c .cicd/concourse/check-rules.yml
 ```
 
 ## TODO
+- [ ] Add RenovateBot to repository
 - [ ] Create Makefile or process for aligning configurations/steps between tools (as much as possible).
 - [x] Create Makefile step for initializing repository with specific CI/CD configuration (e.g. `make cicd concourse`)
 - [ ] Add configuration for pipelines in ArgoCD
