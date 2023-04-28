@@ -1,5 +1,5 @@
 # sigma-cicd-template
-A template repository for managing a Detection Engineering process around Sigma with open source Continous Integration/Deployment platforms.
+A template repository for building a Detecting Engineering process around Sigma and CI/CD platforms to accelerate detection capabilities.
 
 ## Usage
 1) Clone/fork and keep the CI/CD platform configuration necessary for your pipeline and modify as necessary.
@@ -25,9 +25,9 @@ fly -t "cluster" set-pipeline -p check-rules -c .cicd/concourse/check-rules.yml
 - [ ] Add RenovateBot to repository
 - [ ] Create Makefile or process for aligning configurations/steps between tools (as much as possible).
 - [ ] Create process around branch and rule status alignment (if rule status=experimental, force to experimental branch).
-  - How to templatize branch protection methods across different platforms?
+    - How to templatize branch protection methods across different platforms?
 - [x] Create Makefile step for initializing repository with specific CI/CD configuration.
-- [ ] Add pipeline configurations
+- [ ] Add pipeline/workflow configurations
   - [ ] ArgoCD
   - [x] Concourse
   - [ ] Drone
