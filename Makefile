@@ -1,5 +1,7 @@
 .PHONY: cicd clean-cicd setup lint check uuid
 
+# TODO: Add steps for forcing rules into branches based on statuses
+
 UNAME_S := $(shell uname -s)
 
 cicd:
