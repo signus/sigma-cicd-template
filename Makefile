@@ -5,21 +5,19 @@
 UNAME_S := $(shell uname -s)
 
 cicd:
-ifeq ($(CICD), argo)
-	@echo "[!] Placeholder for ArgoCD actions"
-endif
+	@echo "[+] Initializing ${CICD}..."
+#ifeq ($(CICD), argo)
+#endif
 ifeq ($(CICD), bitbucket)
 	@cp .cicd/bitbucket/bitbucket-pipelines.yml .
 endif
-ifeq ($(CICD), concourse)
-	@echo "[!] Placeholder for Concourse actions"
-endif
-ifeq ($(CICD), drone)
-	@echo "[!] Placeholder for Drone actions"
-endif
-ifeq ($(CICD), earthly)
-	@echo "[!] Placeholder for Earthly actions"
-endif
+#ifeq ($(CICD), concourse)
+#endif
+#ifeq ($(CICD), drone)
+#endif
+#ifeq ($(CICD), earthly)
+	#@cp .cicd/eartly/Earthfile Earthfile
+#endif
 ifeq ($(CICD), github)
 	@mkdir -p .github/workflows
 	@cp .cicd/github/workflows/check-rules.yml .github/workflows/
@@ -28,7 +26,7 @@ ifeq ($(CICD), gitlab)
 	@cp .cicd/gitlab/gitlab-ci.yml .gitlab-ci.yml
 endif
 ifeq ($(CICD), jenkins)
-	@echo "[!] Placeholder for Jenkins actions"
+	@cp .cicd/jenkins/Jenkinsfile Jenkinsfile
 endif
 
 clean-cicd:
