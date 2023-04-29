@@ -31,9 +31,9 @@ fly -t "cluster" set-pipeline -p check-rules -c .cicd/concourse/check-rules.yml
   - [ ] ArgoCD
   - [x] Concourse
   - [ ] Drone
-  - [ ] Earthly -- remove? Earthly is more build focused than pipeline focused
+  - [ ] Earthly
   - [x] GitHub Actions
-  - [ ] Jenkins
+  - [x] Jenkins
 - [ ] Add process for implementing validations with solutions like [Automata](https://github.com/3CORESec/Automata) and [Dettectinator](https://github.com/siriussecurity/dettectinator)
 - [ ] Add process for aligning output options/integrations for documentation.
 - [ ] Add process for storing rule conversion outputs for individual targets:
