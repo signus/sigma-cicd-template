@@ -27,11 +27,11 @@ fly -t "cluster" set-pipeline -p check-rules -c .cicd/concourse/check-rules.yml
 - [ ] Create process around branch and rule status alignment (if rule status=experimental, force to experimental branch).
     - How to templatize branch protection methods across different platforms?
 - [x] Create Makefile step for initializing repository with specific CI/CD configuration.
-- [ ] Add pipeline/workflow configurations
+- [ ] Add initial pipeline/workflow configurations
   - [ ] ArgoCD
   - [x] Concourse
   - [ ] Drone
-  - [ ] Earthly
+  - [x] Earthly
   - [x] GitHub Actions
   - [x] Jenkins
 - [ ] Add process for implementing validations with solutions like [Automata](https://github.com/3CORESec/Automata) and [Dettectinator](https://github.com/siriussecurity/dettectinator)

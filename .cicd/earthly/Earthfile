@@ -1,0 +1,13 @@
+# Earthfile
+VERSION 0.7
+
+lint-rules:
+    FROM pipelinecomponents/yamllint
+    COPY rules/ .
+    RUN yamllint -d relaxed .
+
+check-rules:
+    FROM python:3.10
+    COPY rules/ .
+    RUN pip install sigma-cli
+    RUN sigma check -i .

@@ -1,6 +1,7 @@
 .PHONY: cicd clean-cicd setup lint check uuid
 
 # TODO: Add steps for forcing rules into branches based on statuses
+# TODO: Add absolute pathing for cicd target
 
 UNAME_S := $(shell uname -s)
 
@@ -12,12 +13,13 @@ ifeq ($(CICD), bitbucket)
 	@cp .cicd/bitbucket/bitbucket-pipelines.yml .
 endif
 #ifeq ($(CICD), concourse)
+# TODO: Figure out what steps if any are required - concourse operates by uploads
 #endif
 #ifeq ($(CICD), drone)
 #endif
-#ifeq ($(CICD), earthly)
-	#@cp .cicd/eartly/Earthfile Earthfile
-#endif
+ifeq ($(CICD), earthly)
+	@cp .cicd/eartly/Earthfile Earthfile
+endif
 ifeq ($(CICD), github)
 	@mkdir -p .github/workflows
 	@cp .cicd/github/workflows/check-rules.yml .github/workflows/
