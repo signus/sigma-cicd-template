@@ -21,6 +21,14 @@ Install the pipelines using `fly`:
 fly -t "cluster" set-pipeline -p check-rules -c .cicd/concourse/check-rules.yml
 ```
 
+## Supported CI/CD Platforms
+The following are currently availble to begin building pipelines with:
+- BitBucket
+- Concourse
+- GitHub (Actions)
+- GitLab
+- Jenkins
+
 ## TODO
 - [ ] Add RenovateBot to repository
 - [ ] Create Makefile or process for aligning configurations/steps between tools (as much as possible).
