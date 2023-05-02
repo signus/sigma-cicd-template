@@ -43,6 +43,5 @@ jobs:
         args:
           - -exc
           - |
-            ls -lah
             pip install sigma-cli
             sigma check sigma-cicd-template/rules/
