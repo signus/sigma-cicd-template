@@ -45,4 +45,5 @@ fly -t "cluster" set-pipeline -p check-rules -c .cicd/concourse/check-rules.yml
   - [ ] Sentinel/Defender ATP (not currently available as a `sigma-cli` target)
   - [ ] Securonix (not currently available as a `sigma-cli` target)
   - [ ] LogRhythm (not currently available as a `sigma-cli` target)
+- [ ] Add step for publishing rule conversions to wiki (Confluence, etc.) with MITRE ATT&CK map coverage.
 
