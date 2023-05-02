@@ -30,6 +30,7 @@ The following are currently availble to begin building pipelines with:
 - Jenkins
 
 ## TODO
+- [ ] Add Justfile
 - [ ] Add RenovateBot to repository
 - [ ] Create Makefile or process for aligning configurations/steps between tools (as much as possible).
 - [ ] Create process around branch and rule status alignment (if rule status=experimental, force to experimental branch).
