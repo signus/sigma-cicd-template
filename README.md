@@ -9,7 +9,7 @@ A template repository for building a Detecting Engineering process around Sigma 
 To initialize the repository for the CICD platform of your choice:
 
 ```shell
-make cicd CICD=gitlab
+make init-cicd CICD=gitlab
 # optionally clean up the .cicd folder once you have what you need
 make clean-cicd
 ```
@@ -30,8 +30,6 @@ The following are currently availble to begin building pipelines with:
 - Jenkins
 
 ## TODO
-- [ ] Add Justfile
-- [ ] Add RenovateBot to repository
 - [ ] Create Makefile or process for aligning configurations/steps between tools (as much as possible).
 - [ ] Create process around branch and rule status alignment (if rule status=experimental, force to experimental branch).
     - How to templatize branch protection methods across different platforms?
